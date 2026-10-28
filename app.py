@@ -45,9 +45,12 @@ button:hover{background:#1746bc}.note{font-size:13px;color:#697386;margin-top:16
 </section></main></body></html>
 """
 
+
 def valid_youtube_url(url):
-    # Allow standard YouTube watch, short, and youtu.be URLs only.
-    return bool(re.match(r"^https?://(www\\.)?(youtube\\.com|m\\.youtube\\.com|youtu\\.be)/", url.strip(), re.I))
+    # Allow standard YouTube watch, short, and youtu.be URLs.
+    pattern = r"^https?://(www\.)?(youtube\.com|m\.youtube\.com|youtu\.be)/"
+    return bool(re.match(pattern, url.strip(), re.I))
+
 
 @app.get("/")
 def index():
